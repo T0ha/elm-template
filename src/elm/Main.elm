@@ -1,24 +1,24 @@
-module Main exposing (..)
+module Main exposing (initial, main)
 
-import Html
-
-import View
-import Update
+import Browser
 import Model exposing (Model)
 import Subscription
+import Update
+import View
 
-main = 
-    Html.program {
-        init = initial
+
+main =
+    Browser.element
+        { init = initial
         , view = View.view
         , update = Update.update
         , subscriptions = Subscription.subscriptions
-    }
-
-initial : (Model, Cmd Update.Msg)
-initial =
-    ({
-        -- FIXME: Add initial model values here
         }
-        , Cmd.none)
 
+
+initial : () -> ( Model, Cmd Update.Msg )
+initial _ =
+    ( { counter = 0
+      }
+    , Cmd.none
+    )
